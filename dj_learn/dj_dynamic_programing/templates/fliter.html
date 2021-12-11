@@ -1,0 +1,366 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>filter</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1 class="display-1 text-center">Filter Methods</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <a class="btn btn-dark  float-right"
+                    href="https://docs.djangoproject.com/en/3.1/ref/templates/builtins/" role="button">Django Docx</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <ul type="1">
+            <!-- capfirst -->
+            <li>
+                <code>
+                  data: (original):
+                  {{name}}
+                  <br>
+                  data: ("capfirst"):
+                  {{name|capfirst}}
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable | capfirst &#125;&#125;          
+                </code>
+            </li>
+            <br>
+            <hr>
+
+            <!-- default:"Nothing" -->
+            <li>
+                <code>
+                  data: (original):
+                  {{boolval}}
+                  <br>
+                  data: ('default:"Nothing"'):
+                  {{boolval|default:"pass the default value"}}
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|default:"Nothing" &#125;&#125;          
+                </code>
+            </li>
+            <br>
+            <hr>
+
+            <!-- length -->
+            <li>
+                <code>
+                  data: (original):
+                  {{strlen}}
+                  <br>
+                  data: ('length'):
+                  {{strlen|length}}
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|length &#125;&#125;          
+                </code>
+            </li>
+            <br>
+            <hr>
+
+
+            <!-- lower -->
+            <li>
+                <code>
+                  data: (original):
+                  {{name}}
+                  <br>
+                  data: ('lower'):
+                  {{name|lower}}
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|lower &#125;&#125;          
+                </code>
+            </li>
+            <br>
+            <hr>
+
+            <!-- upper -->
+            <li>
+                <code>
+                  data: (original):
+                  {{name}}
+                  <br>
+                  data: ('Upper'):
+                  {{name|upper}}
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|upper &#125;&#125;          
+                </code>
+            </li>
+            <br>
+            <hr>
+
+
+            <!-- slice -->
+            <li>
+                <code>
+                  data: (original):
+                  {{strlen}}
+                  <br>
+                  data: ('slide'):
+                  {{strlen|slice:'2'}}
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|slice:'value pass here' &#125;&#125;          
+                </code>
+            </li>
+            <br>
+            <hr>
+
+
+            <!-- truncatechars -->
+            <li>
+                <code>
+                  data: (original):
+                  {{tx}}
+                  <br>
+                  data: ('truncatechars'):
+                  {{tx|truncatechars:'2'}}
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|truncatechars:'value pass here' &#125;&#125;          
+                </code>
+            </li>
+            <br>
+            <hr>
+
+
+
+            <!-- truncatewords -->
+            <li>
+                <code>
+                  data: (original):
+                  {{tx}}
+                  <br>
+                  data: ('truncatewords'):
+                  {{tx|truncatewords:'1'}}
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|truncatewords:'value pass here' &#125;&#125;          
+                </code>
+            </li>
+            <br>
+            <hr>
+
+
+            <!-- date & time -->
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{% static 'images/daysdata.png' %}"
+                        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="daysdata">
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/week.png' %}"
+                        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="daysdata">
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <img src="{% static 'images/months.png' %}"
+                        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="daysdata">
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/year.png' %}"
+                        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="daysdata">
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <img src="{% static 'images/time2.png' %}"
+                        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="daysdata">
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/dt.png' %}"
+                        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="daysdata">
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <img src="{% static 'images/preformate.png' %}"
+                        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="daysdata">
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/time.png' %}"
+                        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="daysdata">
+                </div>
+            </div>
+
+            <div class="container">
+
+                <hr>
+                <!-- data & time -->
+                <li>
+                    <code>
+                  data: (original):
+                  {{dt}}
+                  <br>
+                  data: ('date'):
+                  {{dt|date:'D d M Y'}}
+                  <br>
+                  data: ('time:'H:i''):
+                  {{dt|time:'H:i'}}
+                  <br>
+                  data: ('date:'SHORT_DATE_FORMAT''):
+                  {{dt|date:'SHORT_DATE_FORMAT'}}
+                  <br>
+                  data: ('time:'TIME_FORMAT''):
+                  {{dt|time:'TIME_FORMAT'}}
+                  <br>
+                  
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|date:'D d M Y' &#125;&#125; 
+                  
+                  <br>
+                  code:          
+                  &#x007B;&#x007B; variable|time:'H:i' &#125;&#125;          
+                  
+                  <br>
+                  code:          
+                  &#x007B;&#x007B; variable|date:'SHORT_DATE_FORMAT' &#125;&#125;          
+                  
+                  <br>
+                  code:          
+                  &#x007B;&#x007B; variable|time:'TIME_FORMAT' &#125;&#125;          
+                </code>
+                </li>
+                <br>
+                <hr>
+            </div>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{% static 'images/floatformat1.png' %}"
+                            class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                            alt="daysdata">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{% static 'images/floatformat2.png' %}"
+                            class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                            alt="daysdata">
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <!-- truncatewords -->
+            <li>
+                <code>
+                  data: (original):
+                  {{val1}}
+                  <br>
+                  data: (original):
+                  {{val2}}
+                  <br>
+                  data: (original):
+                  {{val3}}
+                  <br><br>
+
+                  data: ('floatformat'):
+                  {{val1|floatformat}}
+                  <br>
+                  data: ('floatformat'):
+                  {{val2|floatformat}}
+                  <br>
+                  data: ('floatformat'):
+                  {{val3|floatformat}}
+                  <br><br>
+
+                  data: ('variable|floatformat:values'):
+                  {{val1|floatformat:3}}
+                  <br>
+                  data: ('floatformat'):
+                  {{val2|floatformat:3}}
+                  <br>
+                  data: ('floatformat'):
+                  {{val3|floatformat:3}}
+                  <br><br>
+
+                  data: ('variable|floatformat:zero(0)'):
+                  {{val1|floatformat:0}}
+                  <br>
+                  data: ('floatformat'):
+                  {{val2|floatformat:0}}
+                  <br>
+                  data: ('floatformat'):
+                  {{val3|floatformat:0}}
+                  <br><br>
+
+                  data: ('variable|floatformat:neg value(-)'):
+                  {{val1|floatformat:-3}}
+                  <br>
+                  data: ('floatformat'):
+                  {{val2|floatformat:-3}}
+                  <br>
+                  data: ('floatformat'):
+                  {{val3|floatformat:-3}}
+                  <br><br>
+                  
+                  code:
+                  &#x007B;&#x007B; variable|truncatewords:'value pass here' &#125;&#125;          
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|floatformat &#125;&#125;          
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|floatformat:'values' &#125;&#125;          
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|floatformat:0 &#125;&#125;          
+                  <br>
+                  code:
+                  &#x007B;&#x007B; variable|floatformat:'neg values' &#125;&#125;                  
+                </code>
+            </li>
+            <br>
+            <hr>
+
+        </ul>
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

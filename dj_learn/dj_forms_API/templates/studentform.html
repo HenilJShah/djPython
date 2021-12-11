@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>student</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <style>
+      .somecss{
+        background-color: blueviolet;
+      }
+    </style>
+</head>
+
+<body>
+  <form action="" method="post">
+    <table>
+      {{fm}}
+      <tr>
+        <th>
+          <button type="submit">submit</button>
+        </th>
+      </tr>
+    </table>
+  </form>
+
+  {% comment %} render forms field manually {% endcomment %}
+
+  <form>
+    <div>
+      <label for="{{fm.name.id_for_label}}">name:</label>
+      {{fm.name}}
+    </div>
+
+    <div>{{fm.name.label_tag}} {{fm.name}}</div>
+
+    <div>
+      {{fm.name.label_tag}} {% comment %} here the value is none then you can
+      pass value with view.py and forms.py {% endcomment %} {{fm.name.value}}
+      <br />
+      <label>html value:</label>
+      {{fm.name.html_name}}
+
+      <br />
+      <label>help text:</label>
+      {{fm.name.help_text}}
+    </div>
+  </form>
+
+  <hr>
+
+  <form action="" method="post">
+    {{eg_args.as_p}}
+  </form>
+
+  <hr>
+
+  <form action="" method="post">
+    {{eg_widget.as_p}}
+  </form>
+
+<hr>
+{% comment %} valid form {% endcomment %}
+  <form method="POST">
+    {% csrf_token %}
+    {{eg_valid.as_p}}
+    <button type="submit">submit</button>
+  </form>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
