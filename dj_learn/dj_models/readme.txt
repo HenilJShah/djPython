@@ -1,4 +1,3 @@
-
 title:  showmigrations
 ~>new things in django i learn : 1
 
