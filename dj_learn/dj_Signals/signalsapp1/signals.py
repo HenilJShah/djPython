@@ -3,6 +3,7 @@ from django.contrib.auth.signals import user_logged_in, user_logged_out, user_lo
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import pre_init, pre_save, pre_delete, post_init, post_save, post_delete
+from django.core.signals import request_finished, request_started, got_request_exception
 
 
 # when the user is login call this signal
@@ -94,23 +95,56 @@ def at_ending_delete(sender, instance, **kwargs):
     print(f"kwargs:{kwargs}")
 
 
-# when the user inti the model call this signal
-# it's work beginning
-@receiver(pre_init, sender=User)
-def at_beginning_init(sender, *args, **kwargs):
+# # when the user inti the model call this signal
+# # it's work beginning
+# @receiver(pre_init, sender=User)
+# def at_beginning_init(sender, *args, **kwargs):
+#     print("----------------------------------")
+#     print("pre_init signal...")
+#     print("sender:", sender)
+#     print(f"kwargs:{args}")
+#     print(f"kwargs:{kwargs}")
+
+
+# # when the user inti the model call this signal
+# # it's work after the operation
+# @receiver(post_init, sender=User)
+# def at_ending_init(sender, *args, **kwargs):
+#     print("----------------------------------")
+#     print("post_init signal...")
+#     print("sender:", sender)
+#     print(f"kwargs:{args}")
+#     print(f"kwargs:{kwargs}")
+
+
+# when the user hit app url
+@receiver(request_started)
+def at_beginning_request(sender, environ, **kwargs):
     print("----------------------------------")
-    print("pre_init signal...")
+    print("At Beginning request...")
     print("sender:", sender)
-    print(f"kwargs:{args}")
+    print("environ:", environ)
+    print(f"kwargs:{kwargs}")
+
+# when the user hit app url complete
+@receiver(request_finished)
+def at_ending_request(sender, **kwargs):
+    print("----------------------------------")
+    print("At ending request...")
+    print("sender:", sender)
     print(f"kwargs:{kwargs}")
 
 
-# when the user inti the model call this signal
-# it's work after the operation
-@receiver(post_init, sender=User)
-def at_ending_init(sender, *args, **kwargs):
+# when the user got exception
+# here this operation req_exception hit 'home/' url 
+@receiver(got_request_exception)
+def at_req_exception(sender, request, **kwargs):
     print("----------------------------------")
-    print("post_init signal...")
+    print("At Request exception...")
     print("sender:", sender)
-    print(f"kwargs:{args}")
+    print("request:", request)
     print(f"kwargs:{kwargs}")
+
+
+
+
