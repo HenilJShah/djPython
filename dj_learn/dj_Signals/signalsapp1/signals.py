@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import pre_init, pre_save, pre_delete, post_init, post_save, post_delete, pre_migrate, post_migrate
 from django.core.signals import request_finished, request_started, got_request_exception
+from django.db.backends.signals import connection_created
 
 
 # when the user is login call this signal
@@ -97,26 +98,26 @@ def at_ending_delete(sender, instance, **kwargs):
     print(f"kwargs:{kwargs}")
 
 
-# # when the user inti the model call this signal
-# # it's work beginning
-# @receiver(pre_init, sender=User)
-# def at_beginning_init(sender, *args, **kwargs):
-#     print("----------------------------------")
-#     print("pre_init signal...")
-#     print("sender:", sender)
-#     print(f"kwargs:{args}")
-#     print(f"kwargs:{kwargs}")
+# when the user inti the model call this signal
+# it's work beginning
+@receiver(pre_init, sender=User)
+def at_beginning_init(sender, *args, **kwargs):
+    print("----------------------------------")
+    print("pre_init signal...")
+    print("sender:", sender)
+    print(f"kwargs:{args}")
+    print(f"kwargs:{kwargs}")
 
 
-# # when the user inti the model call this signal
-# # it's work after the operation
-# @receiver(post_init, sender=User)
-# def at_ending_init(sender, *args, **kwargs):
-#     print("----------------------------------")
-#     print("post_init signal...")
-#     print("sender:", sender)
-#     print(f"kwargs:{args}")
-#     print(f"kwargs:{kwargs}")
+# when the user inti the model call this signal
+# it's work after the operation
+@receiver(post_init, sender=User)
+def at_ending_init(sender, *args, **kwargs):
+    print("----------------------------------")
+    print("post_init signal...")
+    print("sender:", sender)
+    print(f"kwargs:{args}")
+    print(f"kwargs:{kwargs}")
 
 
 # when the user hit app url
@@ -181,3 +182,15 @@ def at_end_migrate_flush(sender, app_config, verbosity, interactive, using, plan
     print("apps:", apps)
     print(f"kwargs:{kwargs}")
     
+
+
+# when the database interact with db call this signal
+@receiver(connection_created)
+def conn_db(sender,connection, **kwargs):
+    print("----------------------------------")
+    print("here the app is connected with db")
+    print("sender:", sender)
+    print("connection:", connection)
+    print(f"kwargs:{kwargs}")
+    
+
