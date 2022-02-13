@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'signalsapp1.apps.Signalsapp1Config'
+    'signalsapp1.apps.Signalsapp1Config',
 ]
 
 MIDDLEWARE = [
