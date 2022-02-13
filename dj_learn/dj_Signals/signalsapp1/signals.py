@@ -2,7 +2,7 @@ from venv import create
 from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
 from django.contrib.auth.models import User
 from django.dispatch import receiver
-from django.db.models.signals import pre_init, pre_save, pre_delete, post_init, post_save, post_delete
+from django.db.models.signals import pre_init, pre_save, pre_delete, post_init, post_save, post_delete, pre_migrate, post_migrate
 from django.core.signals import request_finished, request_started, got_request_exception
 
 
@@ -18,6 +18,8 @@ def login_successfully(sender, request, user, **kwargs):
     print(f"kwargs:{kwargs}")
 
 # when the user is logout call this signal
+
+
 @receiver(user_logged_out, sender=User)
 def logout_successfully(sender, request, user, **kwargs):
     print("----------------------------------")
@@ -31,7 +33,7 @@ def logout_successfully(sender, request, user, **kwargs):
 
 # when the user is failed call this signal
 @receiver(user_login_failed)
-def login_failed(sender, credentials ,request, **kwargs):
+def login_failed(sender, credentials, request, **kwargs):
     print("----------------------------------")
     print("logged-failed signal...")
     print("sender:", sender)
@@ -61,7 +63,7 @@ def at_ending_save(sender, instance, created, **kwargs):
         print("New record...")
         print("sender:", sender)
         print("instance:", instance)
-        print("created:",created)
+        print("created:", created)
         print(f"kwargs:{kwargs}")
     else:
         print("----------------------------------")
@@ -69,7 +71,7 @@ def at_ending_save(sender, instance, created, **kwargs):
         print("Updated...")
         print("sender:", sender)
         print("instance:", instance)
-        print("created:",created)
+        print("created:", created)
         print(f"kwargs:{kwargs}")
 
 
@@ -126,6 +128,7 @@ def at_beginning_request(sender, environ, **kwargs):
     print("environ:", environ)
     print(f"kwargs:{kwargs}")
 
+
 # when the user hit app url complete
 @receiver(request_finished)
 def at_ending_request(sender, **kwargs):
@@ -136,7 +139,7 @@ def at_ending_request(sender, **kwargs):
 
 
 # when the user got exception
-# here this operation req_exception hit 'home/' url 
+# here this operation req_exception hit 'home/' url
 @receiver(got_request_exception)
 def at_req_exception(sender, request, **kwargs):
     print("----------------------------------")
@@ -146,5 +149,35 @@ def at_req_exception(sender, request, **kwargs):
     print(f"kwargs:{kwargs}")
 
 
+# when the user migrate model call this signal
+# it's work beginning
+@receiver(pre_migrate)
+def before_install_app(sender, app_config, verbosity, interactive, using, plan, apps, **kwargs):
+    print("----------------------------------")
+    print("before_install_app...")
+    print("sender:", sender)
+    print("app_config:", app_config)
+    print("verbosity:", verbosity)
+    print("interactive:", interactive)
+    print("using:", using)
+    print("plan:", plan)
+    print("apps:", apps)
+    print(f"kwargs:{kwargs}")
+    
 
 
+# when the user migrate model call this signal
+# it's work after the operation
+@receiver(post_migrate)
+def at_end_migrate_flush(sender, app_config, verbosity, interactive, using, plan, apps, **kwargs):
+    print("----------------------------------")
+    print("at_end_migrate_flush...")
+    print("sender:", sender)
+    print("app_config:", app_config)
+    print("verbosity:", verbosity)
+    print("interactive:", interactive)
+    print("using:", using)
+    print("plan:", plan)
+    print("apps:", apps)
+    print(f"kwargs:{kwargs}")
+    
