@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from main import views
+from main.views import UserAddShow, UserDelete, UserUpdate
+from ListViewClassBased.views import CustSuffixTemplateName, CustTemplateName, LoadqueryData, TemplateRendering
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.UserAddShow.as_view(), name="user_adding"),
-    path("updateuser/<int:id>", views.UserUpdate.as_view(), name="update"),
-    path("deleteuser/<int:id>", views.UserDelete.as_view(), name="delete"),
+    path("", UserAddShow.as_view(), name="user_adding"),
+    path("updateuser/<int:id>", UserUpdate.as_view(), name="update"),
+    path("deleteuser/<int:id>", UserDelete.as_view(), name="delete"),
+    path("ls/template", TemplateRendering.as_view(), name="Template_Rendering"),
+    path("ls/custtemp", CustTemplateName.as_view(), name="Template_Rendering"),
+    path("ls/cust", CustSuffixTemplateName.as_view(), name="Cust_Suffix_TemplateName"),
+    path("ls/loadqry", LoadqueryData.as_view(), name="Cust_Suffix_TemplateName"),
 ]

@@ -1,10 +1,10 @@
 from django import forms
-from .models import StudentDb
+from .models import StudentDbCrud
 
 class StudentForm(forms.ModelForm):
 
     class Meta:
-        model = StudentDb
+        model = StudentDbCrud
         fields = ("name", "email", "password")
         widgets = {
             'name':forms.TextInput(attrs={"class": "form-control"}),
